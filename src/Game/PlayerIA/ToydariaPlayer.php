@@ -7,7 +7,7 @@ use Hackathon\Game\Result;
 /**
  * Class ToydariaPlayers
  * @package Hackathon\PlayerIA
- * @author YOUR NAME HERE
+ * @author Hamza MEBAREK
  */
 class ToydariaPlayer extends Player
 {
@@ -41,8 +41,8 @@ class ToydariaPlayer extends Player
         // How can i display the result of each round ? $this->prettyDisplay()
         // -------------------------------------    -----------------------------------------------------
 
-
-        return parent::rockChoice();
+        
+        return parent::scissorsChoice();
 
     }
 };
