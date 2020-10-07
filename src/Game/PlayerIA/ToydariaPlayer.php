@@ -53,9 +53,9 @@ class ToydariaPlayer extends Player
                     return parent::paperChoice();
                 }
                 else if ($last_play == 'paper') {
-                    return parent::rockChoice();
+                    return parent::scissorsChoice();
                 }
-                return parent::scissorsChoice();
+                return parent::rockChoice();
             }
         }
 
