@@ -40,9 +40,25 @@ class ToydariaPlayer extends Player
         // -------------------------------------    -----------------------------------------------------
         // How can i display the result of each round ? $this->prettyDisplay()
         // -------------------------------------    -----------------------------------------------------
-
         
-        return parent::scissorsChoice();
+        //gerer round 0
+        $round = $this->result->getNbRound();
+        if ($round == 0) {
+            return parent::paperChoice();
+        }
 
+        $stats = $this->result->getStatsFor($this->opponentSide);
+        $scissors = $stats['scissors'];
+        $paper = $stats['paper'];
+        $rock = $stats['rock'];
+        if (max($paper, $rock, $scissors) == $paper) {
+            return parent::scissorsChoice();
+        }
+
+        else if(max($paper, $rock, $scissors) == $rock) {
+            return parent::paperChoice();
+
+        }
+        return parent::rockChoice();
     }
 };
