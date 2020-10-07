@@ -65,13 +65,13 @@ class ToydariaPlayer extends Player
             $my_last_play = $my_choices[$my_len - 1];
 
             if ($last_play == $blast_play) {
-                if ($last_play == 'rock') {
+                if ($my_last_play == 'rock') {
+                    return parent::rockChoice();
+                }
+                else if ($my_last_play == 'paper') {
                     return parent::paperChoice();
                 }
-                else if ($last_play == 'paper') {
-                    return parent::scissorsChoice();
-                }
-                return parent::rockChoice();
+                return parent::scissorsChoice();
             }
         }
 
