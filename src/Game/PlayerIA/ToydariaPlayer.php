@@ -8,6 +8,13 @@ use Hackathon\Game\Result;
  * Class ToydariaPlayers
  * @package Hackathon\PlayerIA
  * @author Hamza MEBAREK
+ * J'ai vu qu'une stratégie lorsque l'ennemi utilise 2fois 
+ * ou plus le meme move de suite, il tend a contrer avec un move 
+ * pour battre notre dernier, du coup j'anticipe et j'attaque avec
+ * l'opposé de ce move
+ * 
+ * Ma 2eme stratégie qui passe si cette derniere ne passe pas consiste
+ * a analyser le move le plus utilisé par l'ennemi et utiliser l'opposé
  */
 class ToydariaPlayer extends Player
 {
@@ -17,30 +24,6 @@ class ToydariaPlayer extends Player
 
     public function getChoice()
     {
-        // -------------------------------------    -----------------------------------------------------
-        // How to get my Last Choice           ?    $this->result->getLastChoiceFor($this->mySide) -- if 0 (first round)
-        // How to get the opponent Last Choice ?    $this->result->getLastChoiceFor($this->opponentSide) -- if 0 (first round)
-        // -------------------------------------    -----------------------------------------------------
-        // How to get my Last Score            ?    $this->result->getLastScoreFor($this->mySide) -- if 0 (first round)
-        // How to get the opponent Last Score  ?    $this->result->getLastScoreFor($this->opponentSide) -- if 0 (first round)
-        // -------------------------------------    -----------------------------------------------------
-        // How to get all the Choices          ?    $this->result->getChoicesFor($this->mySide)
-        // How to get the opponent Last Choice ?    $this->result->getChoicesFor($this->opponentSide)
-        // -------------------------------------    -----------------------------------------------------
-        // How to get my Last Score            ?    $this->result->getLastScoreFor($this->mySide)
-        // How to get the opponent Last Score  ?    $this->result->getLastScoreFor($this->opponentSide)
-        // -------------------------------------    -----------------------------------------------------
-        // How to get the stats                ?    $this->result->getStats()
-        // How to get the stats for me         ?    $this->result->getStatsFor($this->mySide)
-        //          array('name' => value, 'score' => value, 'friend' => value, 'foe' => value
-        // How to get the stats for the oppo   ?    $this->result->getStatsFor($this->opponentSide)
-        //          array('name' => value, 'score' => value, 'friend' => value, 'foe' => value
-        // -------------------------------------    -----------------------------------------------------
-        // How to get the number of round      ?    $this->result->getNbRound()
-        // -------------------------------------    -----------------------------------------------------
-        // How can i display the result of each round ? $this->prettyDisplay()
-        // -------------------------------------    -----------------------------------------------------
-        
         //gerer round 0
         $round = $this->result->getNbRound();
         if ($round == 0) {
@@ -65,11 +48,11 @@ class ToydariaPlayer extends Player
             $my_last_play = $my_choices[$my_len - 1];
 
             if ($last_play == $blast_play) {
-                if ($my_last_play == 'rock') {
-                    return parent::rockChoice();
-                }
-                else if ($my_last_play == 'paper') {
+                if ($last_play == 'rock') {
                     return parent::paperChoice();
+                }
+                else if ($last_play == 'paper') {
+                    return parent::rockChoice();
                 }
                 return parent::scissorsChoice();
             }
