@@ -11,7 +11,8 @@ use Hackathon\Game\Result;
  * J'ai vu qu'une stratégie lorsque l'ennemi utilise 2fois 
  * ou plus le meme move de suite, il tend a contrer avec un move 
  * pour battre notre dernier, du coup j'anticipe et j'attaque avec
- * l'opposé de ce move
+ * l'opposé de ce move. Cependant tout le monde utilise cette strat,
+ * alors je l'ai modifiée pour contrecarer cela
  * 
  * Ma 2eme stratégie qui passe si cette derniere ne passe pas consiste
  * a analyser le move le plus utilisé par l'ennemi et utiliser l'opposé
