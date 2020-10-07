@@ -51,6 +51,30 @@ class ToydariaPlayer extends Player
         $scissors = $stats['scissors'];
         $paper = $stats['paper'];
         $rock = $stats['rock'];
+
+        $oppo_choices = $this->result->getChoicesFor($this->opponentSide);
+        $my_choices = $this->result->getChoicesFor($this->mySide);
+
+        $oppo_len = count($oppo_choices);
+        $my_len = count($my_choices);
+
+
+        if ($oppo_len > 1 && $my_len > 1) {
+            $last_play = $oppo_choices[$oppo_len - 1];
+            $blast_play = $oppo_choices[$oppo_len - 2];
+            $my_last_play = $my_choices[$my_len - 1];
+
+            if ($last_play == $blast_play) {
+                if ($last_play == 'rock') {
+                    return parent::paperChoice();
+                }
+                else if ($last_play == 'paper') {
+                    return parent::scissorsChoice();
+                }
+                return parent::rockChoice();
+            }
+        }
+
         if (max($paper, $rock, $scissors) == $paper) {
             return parent::scissorsChoice();
         }
